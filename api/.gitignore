@@ -18,6 +18,7 @@ var/
 .venv
 test.json
 serverless.yml
+.requirements.zip
 
 # Serverless directories
 .serverless

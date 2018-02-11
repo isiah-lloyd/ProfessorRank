@@ -17,6 +17,10 @@ def createProfessor(event, context):
     }
     response = {
         "statusCode": 200,
+        "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+        },
         "body": json.dumps(body)
     }
 
@@ -31,11 +35,19 @@ def getProfessor(event, context):
       }
       response = {
         "statusCode": 404,
+        "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+        },
         "body": json.dumps(body)
       }
     else:
       response = {
         "statusCode": 200,
+        "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+        },
         "body": json.dumps(professor)
       }
     return response
@@ -45,6 +57,10 @@ def createReview(event, context):
     db_connection.createReview(http_body['professor_id'], http_body['user_id'], http_body['rating'], http_body['comment'])
     response = {
         "statusCode": 200,
+         "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+      }
     }
     return response
 def getReview(event, context):
@@ -56,11 +72,19 @@ def getReview(event, context):
       }
       response = {
         "statusCode": 404,
+        "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+        },
         "body": json.dumps(body)
       }
     else:
       response = {
         "statusCode": 200,
+        "headers": {
+          "Access-Control-Allow-Origin" : "*",
+          "Access-Control-Allow-Credentials" : "true"
+        },
         "body": json.dumps(reviews)
       }
     return response
