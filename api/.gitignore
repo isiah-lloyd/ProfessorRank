@@ -17,6 +17,7 @@ var/
 *.egg
 .venv
 test.json
+serverless.yml
 
 # Serverless directories
 .serverless

@@ -11,8 +11,14 @@ class DBconnection():
     self.cursor = self.db_connection.cursor()
 
   def createProfessor(self, name, school_id, department):
-    self.cursor.execute("""INSERT INTO professors(name, school_id, department) VALUES (%s, %s, %s)""", (name, school_id, department))
-
+    self.cursor.execute("""INSERT INTO professors(name, school_id, department) VALUES(%s, %s, %s) RETURNING id""", (name, school_id, department))
+    return self.cursor.fetchone()[0]
+  def getProfessor(self, id):
+    self.cursor.execute("""SELECT id, name, school_id, department, rating FROM professors WHERE id=%s LIMIT 1""", (id))
+    return self.cursor.fetchone()
+  def createReview(self, professor_id, user_id, rating, comment):
+    self.cursor.execute("""INSERT INTO reviews(professor_id, user_id, rating, comment) VALUES(%s, %s, %s, %s)""", (professor_id, user_id, rating, comment))
+  def getReview
   def __del__(self):
     self.db_connection.commit()
     self.cursor.close()
