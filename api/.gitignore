@@ -16,6 +16,7 @@ var/
 .installed.cfg
 *.egg
 .venv
+test.json
 
 # Serverless directories
 .serverless
